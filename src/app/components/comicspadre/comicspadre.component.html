@@ -1,0 +1,22 @@
+<div>
+    <h1>Comics</h1>
+
+    <div *ngIf="favorito">
+        <h2>Pelicula favorita</h2>
+        <img src="{{favorito.imagen}}" alt="foto" style="width: 150px; height: 150px;">
+    </div>
+    <hr/>
+    <div>
+        <label>Titulo</label>
+        <input type="text" name="cajatitulo" #cajatitulo><br/>
+        <label>Imagen</label>
+        <input type="text" name="cajaimagen" #cajaimagen><br/>
+        <label>Descripcion</label>
+        <input type="text" name="cajadescripcion" #cajadescripcion><br/>
+        <button (click)="crearComic()">Crear</button>
+    </div>
+
+    <div *ngFor="let comic of comics; let i = index">
+        <app-comichijo [comic]="comic" [index]="i" (favorito)="seleccionarFavorito($event)" (eliminar)="eliminarComic($event)" (modificar)="modificarComic($event)"></app-comichijo>
+    </div>
+</div>
